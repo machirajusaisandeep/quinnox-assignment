@@ -75,7 +75,7 @@ export class FilterSidebarComponent {
     rating: null,
   };
 
-  private debouncedUpdateFilters = debounce(() => this.updateFilters(), 300);
+  public debouncedUpdateFilters = debounce(() => this.updateFilters(), 300);
 
   updateFilters(): void {
     this.filterChange.emit(this.filters);
