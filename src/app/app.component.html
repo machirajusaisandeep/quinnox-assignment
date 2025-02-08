@@ -7,7 +7,12 @@
     </aside>
     <main class="content-col">
       <div class="header">
-        <h2>Product Catalog</h2>
+        <div class="header-left">
+          <h2>Product Catalog</h2>
+          <span class="results-count"
+            >({{ productList?.filteredProducts?.length ?? 0 }} results)</span
+          >
+        </div>
         <div class="wishlist-container">
           <button class="wishlist-btn" (click)="toggleWishlist()">
             <i class="fas fa-heart"></i>
@@ -42,7 +47,9 @@
           </div>
         </div>
       </div>
-      <app-product-list #productList></app-product-list>
+      <div class="products-container">
+        <app-product-list #productList></app-product-list>
+      </div>
     </main>
   </div>
 </div>

@@ -7,10 +7,9 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
-  padding: 0;
+  padding: 20px;
   width: 100%;
-  max-width: 100%;
-  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .product-wrapper {

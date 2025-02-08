@@ -9,6 +9,8 @@
   padding: 12px;
   height: 100%;
   transition: box-shadow 0.2s;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .card:hover {
@@ -25,6 +27,7 @@
 
 .card-body {
   padding: 0;
+  width: 100%;
 }
 
 .card-title {
@@ -32,8 +35,11 @@
   color: #0f1111;
   margin-bottom: 8px;
   line-height: 1.4;
-  height: 40px;
   overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .price {
@@ -61,8 +67,8 @@ ngb-rating {
 .btn-wishlist {
   width: 100%;
   padding: 8px;
-  background: #ffd814;
-  border: 1px solid #fcd200;
+  background: #e41e31;
+  border: 1px solid #b31526;
   border-radius: 8px;
   cursor: pointer;
   font-size: 13px;
@@ -70,12 +76,14 @@ ngb-rating {
   align-items: center;
   justify-content: center;
   gap: 8px;
+  color: white;
+  box-sizing: border-box;
 }
 
-.btn-wishlist.in-wishlist {
-  background: #e41e31;
-  border-color: #b31526;
-  color: white;
+.btn-wishlist:not(.in-wishlist) {
+  background: #ffd814;
+  border-color: #fcd200;
+  color: #0f1111;
 }
 
 .btn-wishlist i {

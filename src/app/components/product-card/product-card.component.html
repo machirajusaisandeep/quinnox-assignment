@@ -11,12 +11,13 @@
       [class.in-wishlist]="isInWishlist"
       (click)="onWishlistClick()"
     >
-      <i
-        class="fas"
-        [class.fa-heart]="isInWishlist"
-        [class.fa-heart-o]="!isInWishlist"
-      ></i>
-      {{ isInWishlist ? "Remove from Wishlist" : "Add to Wishlist" }}
+      @if (isInWishlist) {
+      <i class="fas fa-trash"></i>
+      <span>Remove from Wishlist</span>
+      } @else {
+      <i class="fas fa-heart"></i>
+      <span>Add to Wishlist</span>
+      }
     </button>
   </div>
 </div>
