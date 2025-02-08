@@ -1,0 +1,45 @@
+.container-fluid {
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  padding: 0;
+}
+
+.row {
+  margin: 0;
+}
+
+.sidebar-col {
+  width: 280px;
+  background-color: white;
+  border-right: 1px solid #ddd;
+  position: fixed;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.content-col {
+  margin-left: 280px;
+  padding: 20px;
+  width: calc(100% - 280px);
+}
+
+h2 {
+  font-size: 28px;
+  color: #0f1111;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .sidebar-col {
+    width: 100%;
+    position: relative;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .content-col {
+    margin-left: 0;
+    width: 100%;
+  }
+}

@@ -1,60 +1,76 @@
 .sidebar {
   background-color: #ffffff;
   height: 100%;
-  padding: 24px;
+  padding: 16px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
+h3 {
+  font-size: 18px;
+  color: #0f1111;
+  margin-bottom: 16px;
+}
+
 h4 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #2c3e50;
-  margin-bottom: 24px;
-  padding-bottom: 12px;
-  border-bottom: 2px solid #f0f2f5;
+  font-size: 14px;
+  color: #0f1111;
+  margin-bottom: 8px;
 }
 
 .filter-section {
-  margin-bottom: 28px;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #ddd;
 }
 
-.form-label {
-  display: block;
-  font-weight: 500;
-  color: #4a5568;
-  margin-bottom: 12px;
-  font-size: 0.95rem;
+.price-inputs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
 }
 
-.form-check {
-  margin-bottom: 12px;
-  padding-left: 28px;
+.price-inputs input {
+  width: 80px;
+  padding: 6px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }
 
-.form-check-input {
-  width: 18px;
-  height: 18px;
-  margin-left: -28px;
-  margin-top: 2px;
-  border: 2px solid #cbd5e0;
+.go-button {
+  padding: 4px 12px;
+  background: #f0f2f2;
+  border: 1px solid #d5d9d9;
+  border-radius: 4px;
   cursor: pointer;
 }
 
-.form-check-input:checked {
-  background-color: #3182ce;
-  border-color: #3182ce;
+.go-button:hover {
+  background: #e3e6e6;
 }
 
-.form-check-label {
-  color: #4a5568;
-  font-size: 0.95rem;
+.rating-option,
+.category-option {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stars {
+  color: #ffa41c;
+  letter-spacing: -2px;
+}
+
+label {
+  font-size: 14px;
+  color: #0f1111;
   cursor: pointer;
-  transition: color 0.2s ease;
 }
 
-.form-check-input:checked + .form-check-label {
-  color: #2b6cb0;
-  font-weight: 500;
+input[type="checkbox"],
+input[type="radio"] {
+  cursor: pointer;
 }
 
 /* Price Range Slider Styles */
@@ -127,12 +143,6 @@ h4 {
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   .sidebar {
-    padding: 16px;
-    height: auto;
-    margin-bottom: 20px;
-  }
-
-  .form-check {
-    margin-bottom: 10px;
+    padding: 12px;
   }
 }

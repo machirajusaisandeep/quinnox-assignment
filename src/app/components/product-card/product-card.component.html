@@ -1,18 +1,12 @@
-<div class="card h-100">
-  <img
-    [src]="product.image || 'assets/placeholder.jpg'"
-    class="card-img-top"
-    [alt]="product.name"
-  />
+<div class="card">
+  <div class="placeholder-div"></div>
   <div class="card-body">
     <h5 class="card-title">{{ product.name }}</h5>
-    <p class="card-text">Price: ${{ product.price }}</p>
-    <ngb-rating
-      [rate]="product.rating"
-      [readonly]="true"
-      [max]="5"
-    ></ngb-rating>
-    <button class="btn btn-primary mt-2" (click)="onWishlistClick()">
+    <div class="price">₹{{ product.price }}</div>
+    <div class="rating">
+      <ngb-rating [rate]="getRating()" [readonly]="true" [max]="5"></ngb-rating>
+    </div>
+    <button class="btn-wishlist" (click)="onWishlistClick()">
       {{ isInWishlist ? "Remove from Wishlist" : "Add to Wishlist" }}
     </button>
   </div>

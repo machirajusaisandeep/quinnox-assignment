@@ -1,6 +1,6 @@
-<div class="row row-cols-1 row-cols-md-3 g-4">
-  @for (product of products; track product.id) {
-  <div class="col">
+<div class="products-grid">
+  @for (product of filteredProducts; track product.id) {
+  <div class="product-item">
     <app-product-card [product]="product"></app-product-card>
   </div>
   }

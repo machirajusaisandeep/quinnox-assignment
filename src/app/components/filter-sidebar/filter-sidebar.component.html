@@ -1,62 +1,59 @@
-<div class="sidebar p-3">
-  <h4>Filters</h4>
+<div class="sidebar">
+  <h3>Filters</h3>
 
-  <div class="mb-4">
-    <label class="form-label">Categories</label>
-    @for (category of categories; track category) {
-    <div class="form-check">
+  <div class="filter-section">
+    <h4>Price</h4>
+    <div class="price-inputs">
       <input
-        class="form-check-input"
-        type="checkbox"
-        [id]="'category-' + category"
-        [checked]="isCategorySelected(category)"
-        (change)="toggleCategory(category)"
-      />
-      <label class="form-check-label" [for]="'category-' + category">
-        {{ category }}
-      </label>
-    </div>
-    }
-  </div>
-
-  <div class="mb-4">
-    <label class="form-label">Price Range</label>
-    <div class="price-range">
-      <input
-        type="range"
-        class="form-range"
+        type="number"
         [(ngModel)]="filters.priceRange.min"
         (input)="debouncedUpdateFilters()"
-        min="0"
-        max="10000"
+        placeholder="Min"
       />
-      <div class="d-flex justify-content-between">
-        <span>${{ filters.priceRange.min }}</span>
-        <span>${{ filters.priceRange.max }}</span>
-      </div>
+      <span>-</span>
+      <input
+        type="number"
+        [(ngModel)]="filters.priceRange.max"
+        (input)="debouncedUpdateFilters()"
+        placeholder="Max"
+      />
     </div>
+    <button class="go-button" (click)="updateFilters()">Go</button>
   </div>
 
-  <div class="mb-3">
-    <label class="form-label">Rating</label>
-    @for (star of [5,4,3,2,1]; track star) {
-    <div class="form-check">
+  <div class="filter-section">
+    <h4>Customer Rating</h4>
+    @for (star of [4,3,2,1]; track star) {
+    <div class="rating-option">
       <input
-        class="form-check-input"
         type="radio"
-        [id]="'rating' + star"
+        [id]="'star' + star"
         name="rating"
         [value]="star"
         [(ngModel)]="filters.rating"
         (change)="updateFilters()"
       />
-      <label
-        class="form-check-label"
-        [for]="'rating' + star"
-        [class.active]="filters.rating === star"
-      >
-        {{ star }} Stars & Up
+      <label [for]="'star' + star">
+        <span class="stars"
+          >{{ "★".repeat(star) }}{{ "☆".repeat(5 - star) }}</span
+        >
+        & Up
       </label>
+    </div>
+    }
+  </div>
+
+  <div class="filter-section">
+    <h4>Categories</h4>
+    @for (category of categories; track category) {
+    <div class="category-option">
+      <input
+        type="checkbox"
+        [id]="category"
+        [checked]="isCategorySelected(category)"
+        (change)="toggleCategory(category)"
+      />
+      <label [for]="category">{{ category }}</label>
     </div>
     }
   </div>

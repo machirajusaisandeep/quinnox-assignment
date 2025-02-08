@@ -1,13 +1,13 @@
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-md-3 p-0">
+  <div class="row g-0">
+    <aside class="sidebar-col">
       <app-filter-sidebar
         (filterChange)="onFilterChange($event)"
       ></app-filter-sidebar>
-    </div>
-    <div class="col-md-9 p-4">
-      <h2 class="mb-4">Product Catalog</h2>
+    </aside>
+    <main class="content-col">
+      <h2>Product Catalog</h2>
       <app-product-list></app-product-list>
-    </div>
+    </main>
   </div>
 </div>
