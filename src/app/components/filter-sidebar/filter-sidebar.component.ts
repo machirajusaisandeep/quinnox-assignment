@@ -1,6 +1,7 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { debounce } from '../../utils/debounce';
 
 export interface FilterState {
   search: string;
@@ -16,7 +17,7 @@ export interface FilterState {
   templateUrl: './filter-sidebar.component.html',
   styleUrl: './filter-sidebar.component.css',
 })
-export class FilterSidebarComponent {
+export class FilterSidebarComponent implements OnInit {
   @Output() filterChange = new EventEmitter<FilterState>();
 
   categories = ['Electronics', 'Clothing', 'Books', 'Sports', 'Home'];
@@ -28,6 +29,14 @@ export class FilterSidebarComponent {
     categories: [],
   };
 
+  private debouncedUpdateFilters: () => void = () => {};
+
+  ngOnInit() {
+    this.debouncedUpdateFilters = debounce(() => {
+      this.updateFilters();
+    }, 300);
+  }
+
   updateFilters(): void {
     this.filterChange.emit(this.filters);
   }
@@ -37,7 +46,7 @@ export class FilterSidebarComponent {
   }
 
   onPriceChange(): void {
-    this.updateFilters();
+    this.debouncedUpdateFilters();
   }
 
   onRatingChange(rating: number): void {
