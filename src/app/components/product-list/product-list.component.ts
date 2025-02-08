@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ProductCardComponent } from '../product-card/product-card.component';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product';
+import { FilterState } from '../filter-sidebar/filter-sidebar.component';
 
 @Component({
   selector: 'app-product-list',
@@ -12,29 +13,34 @@ import { Product } from '../../models/product';
   styleUrl: './product-list.component.css',
 })
 export class ProductListComponent implements OnInit {
-  products: Product[] = [];
+  allProducts: Product[] = [];
   filteredProducts: Product[] = [];
 
   constructor(private productService: ProductService) {}
 
   ngOnInit() {
     this.productService.getProducts().subscribe((products) => {
-      this.products = products;
+      this.allProducts = products;
       this.filteredProducts = products;
     });
   }
 
-  applyFilters(filters: any) {
-    this.filteredProducts = this.products.filter((product) => {
-      const priceMatch =
-        (!filters.priceRange.min || product.price >= filters.priceRange.min) &&
-        (!filters.priceRange.max || product.price <= filters.priceRange.max);
-      const ratingMatch = !filters.rating || product.rating >= filters.rating;
-      const categoryMatch =
-        filters.categories.length === 0 ||
-        filters.categories.includes(product.category);
+  applyFilters(filters: FilterState): void {
+    this.filteredProducts = this.allProducts.filter((product) => {
+      const productPrice = parseFloat(product.price);
+      const productRating = parseFloat(product.rating);
+      const minPrice = filters.priceRange.min
+        ? parseFloat(filters.priceRange.min)
+        : 0;
+      const maxPrice = filters.priceRange.max
+        ? parseFloat(filters.priceRange.max)
+        : Infinity;
+      const filterRating = filters.rating ? parseFloat(filters.rating) : 0;
 
-      return priceMatch && ratingMatch && categoryMatch;
+      const priceInRange = productPrice >= minPrice && productPrice <= maxPrice;
+      const meetsRating = productRating >= filterRating;
+
+      return priceInRange && meetsRating;
     });
   }
 }

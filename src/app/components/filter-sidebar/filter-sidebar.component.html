@@ -7,18 +7,17 @@
       <input
         type="number"
         [(ngModel)]="filters.priceRange.min"
-        (input)="debouncedUpdateFilters()"
+        (change)="updateFilters()"
         placeholder="Min"
       />
       <span>-</span>
       <input
         type="number"
         [(ngModel)]="filters.priceRange.max"
-        (input)="debouncedUpdateFilters()"
+        (change)="updateFilters()"
         placeholder="Max"
       />
     </div>
-    <button class="go-button" (click)="updateFilters()">Go</button>
   </div>
 
   <div class="filter-section">
@@ -30,8 +29,8 @@
         [id]="'star' + star"
         name="rating"
         [value]="star"
-        [(ngModel)]="filters.rating"
-        (change)="updateFilters()"
+        [checked]="filters.rating === star.toString()"
+        (change)="onRatingChange(star)"
       />
       <label [for]="'star' + star">
         <span class="stars"

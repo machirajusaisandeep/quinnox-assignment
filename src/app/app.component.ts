@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { FilterSidebarComponent } from './components/filter-sidebar/filter-sidebar.component';
+import { FilterState } from './components/filter-sidebar/filter-sidebar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProductService } from './services/product.service';
 import { Product } from './models/product';
@@ -19,6 +20,8 @@ import { Product } from './models/product';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
+  @ViewChild(ProductListComponent) productList!: ProductListComponent;
+
   filteredProducts: Product[] = [];
 
   constructor(private productService: ProductService) {}
@@ -29,8 +32,9 @@ export class AppComponent {
     });
   }
 
-  onFilterChange(filters: any) {
-    // Handle filter changes
-    console.log('Filters changed:', filters);
+  onFilterChange(filters: FilterState) {
+    if (this.productList) {
+      this.productList.applyFilters(filters);
+    }
   }
 }
