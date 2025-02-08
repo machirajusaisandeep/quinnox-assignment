@@ -1,23 +1,39 @@
 <div class="sidebar p-3">
   <h4>Filters</h4>
 
-  <div class="mb-3">
-    <label class="form-label">Price Range</label>
-    <div class="d-flex gap-2">
+  <div class="mb-4">
+    <label class="form-label">Categories</label>
+    @for (category of categories; track category) {
+    <div class="form-check">
       <input
-        type="number"
-        class="form-control"
+        class="form-check-input"
+        type="checkbox"
+        [id]="'category-' + category"
+        [checked]="isCategorySelected(category)"
+        (change)="toggleCategory(category)"
+      />
+      <label class="form-check-label" [for]="'category-' + category">
+        {{ category }}
+      </label>
+    </div>
+    }
+  </div>
+
+  <div class="mb-4">
+    <label class="form-label">Price Range</label>
+    <div class="price-range">
+      <input
+        type="range"
+        class="form-range"
         [(ngModel)]="filters.priceRange.min"
         (input)="debouncedUpdateFilters()"
-        placeholder="Min"
+        min="0"
+        max="10000"
       />
-      <input
-        type="number"
-        class="form-control"
-        [(ngModel)]="filters.priceRange.max"
-        (input)="debouncedUpdateFilters()"
-        placeholder="Max"
-      />
+      <div class="d-flex justify-content-between">
+        <span>${{ filters.priceRange.min }}</span>
+        <span>${{ filters.priceRange.max }}</span>
+      </div>
     </div>
   </div>
 
@@ -34,7 +50,11 @@
         [(ngModel)]="filters.rating"
         (change)="updateFilters()"
       />
-      <label class="form-check-label" [for]="'rating' + star">
+      <label
+        class="form-check-label"
+        [for]="'rating' + star"
+        [class.active]="filters.rating === star"
+      >
         {{ star }} Stars & Up
       </label>
     </div>

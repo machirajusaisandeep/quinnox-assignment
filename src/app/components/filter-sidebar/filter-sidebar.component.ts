@@ -18,15 +18,35 @@ interface FilterState {
 export class FilterSidebarComponent {
   @Output() filterChange = new EventEmitter<FilterState>();
 
+  categories = ['Electronics', 'Clothing', 'Books', 'Sports', 'Home'];
+  selectedCategories: string[] = [];
+
   filters: FilterState = {
     categories: [],
-    priceRange: { min: 0, max: 0 },
+    priceRange: { min: 0, max: 10000 },
     rating: null,
   };
 
   public debouncedUpdateFilters = debounce(() => this.updateFilters(), 300);
 
   updateFilters(): void {
-    this.filterChange.emit(this.filters);
+    this.filterChange.emit({
+      ...this.filters,
+      categories: this.selectedCategories,
+    });
+  }
+
+  toggleCategory(category: string): void {
+    const index = this.selectedCategories.indexOf(category);
+    if (index === -1) {
+      this.selectedCategories.push(category);
+    } else {
+      this.selectedCategories.splice(index, 1);
+    }
+    this.updateFilters();
+  }
+
+  isCategorySelected(category: string): boolean {
+    return this.selectedCategories.includes(category);
   }
 }

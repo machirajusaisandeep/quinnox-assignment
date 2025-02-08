@@ -13,12 +13,28 @@ import { Product } from '../../models/product';
 })
 export class ProductListComponent implements OnInit {
   products: Product[] = [];
+  filteredProducts: Product[] = [];
 
   constructor(private productService: ProductService) {}
 
   ngOnInit() {
-    this.productService.getProducts().subscribe((data) => {
-      this.products = data;
+    this.productService.getProducts().subscribe((products) => {
+      this.products = products;
+      this.filteredProducts = products;
+    });
+  }
+
+  applyFilters(filters: any) {
+    this.filteredProducts = this.products.filter((product) => {
+      const priceMatch =
+        (!filters.priceRange.min || product.price >= filters.priceRange.min) &&
+        (!filters.priceRange.max || product.price <= filters.priceRange.max);
+      const ratingMatch = !filters.rating || product.rating >= filters.rating;
+      const categoryMatch =
+        filters.categories.length === 0 ||
+        filters.categories.includes(product.category);
+
+      return priceMatch && ratingMatch && categoryMatch;
     });
   }
 }
