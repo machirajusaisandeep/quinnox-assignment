@@ -21,14 +21,19 @@ import { Product } from './models/product';
 })
 export class AppComponent {
   @ViewChild(ProductListComponent) productList!: ProductListComponent;
+  showWishlist = false;
 
   filteredProducts: Product[] = [];
+
+  constructor(private productService: ProductService) {}
 
   get wishlistCount(): number {
     return this.productService.getWishlist().length;
   }
 
-  constructor(private productService: ProductService) {}
+  get wishlistItems(): Product[] {
+    return this.productService.getWishlist();
+  }
 
   ngOnInit() {
     this.productService.getProducts().subscribe((products) => {
@@ -40,5 +45,13 @@ export class AppComponent {
     if (this.productList) {
       this.productList.applyFilters(filters);
     }
+  }
+
+  toggleWishlist(): void {
+    this.showWishlist = !this.showWishlist;
+  }
+
+  removeFromWishlist(productId: number): void {
+    this.productService.removeFromWishlist(productId);
   }
 }

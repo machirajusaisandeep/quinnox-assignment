@@ -1,9 +1,24 @@
 <div class="sidebar">
   <div class="filters-header">
     <h3>Filters</h3>
+    @if (hasActiveFilters()) {
     <button class="clear-btn" (click)="clearFilters()">
       <i class="fas fa-times"></i> Clear All
     </button>
+    }
+  </div>
+
+  <div class="filter-section">
+    <h4>Search Products</h4>
+    <div class="search-input">
+      <i class="fas fa-search"></i>
+      <input
+        type="text"
+        [(ngModel)]="filters.search"
+        (input)="onSearchChange()"
+        placeholder="Search by name..."
+      />
+    </div>
   </div>
 
   <div class="filter-section">

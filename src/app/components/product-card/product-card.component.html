@@ -1,12 +1,21 @@
 <div class="card">
   <div class="placeholder-div"></div>
   <div class="card-body">
-    <h5 class="card-title">{{ product.name }}</h5>
+    <h5 class="card-title">{{ product.productName }}</h5>
     <div class="price">₹{{ product.price }}</div>
     <div class="rating">
       <span class="stars">{{ getStarRating() }}</span>
     </div>
-    <button class="btn-wishlist" (click)="onWishlistClick()">
+    <button
+      class="btn-wishlist"
+      [class.in-wishlist]="isInWishlist"
+      (click)="onWishlistClick()"
+    >
+      <i
+        class="fas"
+        [class.fa-heart]="isInWishlist"
+        [class.fa-heart-o]="!isInWishlist"
+      ></i>
       {{ isInWishlist ? "Remove from Wishlist" : "Add to Wishlist" }}
     </button>
   </div>

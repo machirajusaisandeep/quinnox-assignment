@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 export interface FilterState {
+  search: string;
   priceRange: { min: string; max: string };
   rating: string | null;
   categories: string[];
@@ -21,6 +22,7 @@ export class FilterSidebarComponent {
   categories = ['Electronics', 'Clothing', 'Books', 'Sports', 'Home'];
 
   filters: FilterState = {
+    search: '',
     priceRange: { min: '', max: '' },
     rating: null,
     categories: [],
@@ -28,6 +30,10 @@ export class FilterSidebarComponent {
 
   updateFilters(): void {
     this.filterChange.emit(this.filters);
+  }
+
+  onSearchChange(): void {
+    this.updateFilters();
   }
 
   onPriceChange(): void {
@@ -55,10 +61,21 @@ export class FilterSidebarComponent {
 
   clearFilters(): void {
     this.filters = {
+      search: '',
       priceRange: { min: '', max: '' },
       rating: null,
       categories: [],
     };
     this.updateFilters();
+  }
+
+  hasActiveFilters(): boolean {
+    return !!(
+      this.filters.search ||
+      this.filters.priceRange.min ||
+      this.filters.priceRange.max ||
+      this.filters.rating ||
+      this.filters.categories.length
+    );
   }
 }

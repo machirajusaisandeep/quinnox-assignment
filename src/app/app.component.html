@@ -8,11 +8,38 @@
     <main class="content-col">
       <div class="header">
         <h2>Product Catalog</h2>
-        <div class="actions">
-          <button class="wishlist-btn">
+        <div class="wishlist-container">
+          <button class="wishlist-btn" (click)="toggleWishlist()">
             <i class="fas fa-heart"></i>
-            <span class="badge">{{ wishlistCount }}</span>
+            <span class="badge" *ngIf="wishlistCount > 0">{{
+              wishlistCount
+            }}</span>
           </button>
+
+          <div class="wishlist-popover" *ngIf="showWishlist">
+            <div class="wishlist-header">
+              <h3>Wishlist Items ({{ wishlistCount }})</h3>
+            </div>
+            <div class="wishlist-items">
+              @if (wishlistItems.length) { @for (item of wishlistItems; track
+              item.id) {
+              <div class="wishlist-item">
+                <div class="item-info">
+                  <p class="item-name">{{ item.productName }}</p>
+                  <p class="item-price">₹{{ item.price }}</p>
+                </div>
+                <button
+                  class="remove-btn"
+                  (click)="removeFromWishlist(item.id)"
+                >
+                  <i class="fas fa-trash"></i>
+                </button>
+              </div>
+              } } @else {
+              <p class="empty-message">No items in wishlist</p>
+              }
+            </div>
+          </div>
         </div>
       </div>
       <app-product-list #productList></app-product-list>

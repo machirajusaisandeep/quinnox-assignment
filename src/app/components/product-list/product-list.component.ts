@@ -37,10 +37,15 @@ export class ProductListComponent implements OnInit {
         : Infinity;
       const filterRating = filters.rating ? parseFloat(filters.rating) : 0;
 
+      const searchMatch =
+        !filters.search ||
+        product.productName
+          .toLowerCase()
+          .includes(filters.search.toLowerCase());
       const priceInRange = productPrice >= minPrice && productPrice <= maxPrice;
       const meetsRating = productRating >= filterRating;
 
-      return priceInRange && meetsRating;
+      return searchMatch && priceInRange && meetsRating;
     });
   }
 }

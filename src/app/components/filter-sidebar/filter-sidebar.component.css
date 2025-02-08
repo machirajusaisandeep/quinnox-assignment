@@ -172,3 +172,29 @@ input[type="radio"] {
 .clear-btn i {
   font-size: 12px;
 }
+
+.search-input {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.search-input input {
+  width: 100%;
+  padding: 8px 32px 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.search-input i {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #565959;
+}
+
+.search-input input:focus {
+  outline: none;
+  border-color: #007185;
+}

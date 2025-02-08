@@ -66,10 +66,20 @@ ngb-rating {
   border-radius: 8px;
   cursor: pointer;
   font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
-.btn-wishlist:hover {
-  background: #f7ca00;
+.btn-wishlist.in-wishlist {
+  background: #e41e31;
+  border-color: #b31526;
+  color: white;
+}
+
+.btn-wishlist i {
+  font-size: 16px;
 }
 
 .card-img-top {
