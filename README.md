@@ -1,59 +1,40 @@
-# ProductFilterApp
+# Dynamic Product Filtering Application
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.5.
+🚀 **Live Demo**: [Click Here](https://quinnoxx-assignment-frontend-dev.netlify.app/)  
+📂 **GitHub Repository**: [Click Here](https://github.com/machirajusaisandeep/quinnox-assignment)
 
-## Development server
+## 📌 Project Overview
 
-To start a local development server, run:
+This is a **Dynamic Product Filtering Application** built using **Angular (v13+), Bootstrap**, and **TypeScript**. It allows users to browse a product catalog and filter items dynamically based on **categories, price range, and ratings**. Additionally, it includes a **wishlist** feature stored in `localStorage`.
 
-```bash
-ng serve
+## 🛠️ Tech Stack
+
+- **Frontend**: Angular (v13+), TypeScript, Bootstrap
+- **API**: Fetches product data from an external API
+- **State Management**: Angular Services & RxJS
+- **Storage**: LocalStorage for wishlist feature
+
+---
+
+## 🎯 Features
+
+✅ **Dynamic Product Listing** – Fetches products from the API and displays them in a responsive grid layout  
+✅ **Advanced Filtering** – Users can filter products based on:
+
+- Categories (Dropdown)
+- Price Range (Slider with debounce)
+- Ratings (Checkbox selection)  
+  ✅ **Debounced Price Filtering** – Optimized price filter using a debounce function to prevent unnecessary API calls  
+  ✅ **Wishlist Functionality** – Users can add/remove products to a wishlist, which persists in `localStorage`  
+  ✅ **Fully Responsive Design** – Supports mobile, tablet, and desktop views
+
+---
+
+## 🚀 Getting Started
+
+### 1️⃣ Clone the Repository
+
+```sh
+git clone https://github.com/machirajusaisandeep/quinnox-assignment.git
+cd quinnox-assignment
 ```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

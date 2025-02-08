@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { debounce } from '../../utils/debounce';
@@ -19,6 +19,7 @@ export interface FilterState {
 })
 export class FilterSidebarComponent implements OnInit {
   @Output() filterChange = new EventEmitter<FilterState>();
+  @Output() closeFilters = new EventEmitter<void>();
 
   categories = ['Electronics', 'Clothing', 'Books', 'Sports', 'Home'];
 

@@ -1,11 +1,16 @@
 <div class="sidebar">
   <div class="filters-header">
     <h3>Filters</h3>
-    @if (hasActiveFilters()) {
-    <button class="clear-btn" (click)="clearFilters()">
-      <i class="fas fa-times"></i> Clear All
-    </button>
-    }
+    <div class="header-actions">
+      @if (hasActiveFilters()) {
+      <button class="clear-btn" (click)="clearFilters()">
+        <i class="fas fa-times"></i> Clear All
+      </button>
+      }
+      <button class="close-btn mobile-only" (click)="closeFilters.emit()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
   </div>
 
   <div class="filter-section">

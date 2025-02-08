@@ -22,6 +22,7 @@ import { Product } from './models/product';
 export class AppComponent {
   @ViewChild(ProductListComponent) productList!: ProductListComponent;
   showWishlist = false;
+  showFilters = false;
 
   filteredProducts: Product[] = [];
 
@@ -53,5 +54,13 @@ export class AppComponent {
 
   removeFromWishlist(productId: number): void {
     this.productService.removeFromWishlist(productId);
+  }
+
+  toggleFilters(): void {
+    this.showFilters = !this.showFilters;
+    // Close wishlist if open
+    if (this.showFilters && this.showWishlist) {
+      this.showWishlist = false;
+    }
   }
 }

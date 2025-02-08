@@ -1,13 +1,22 @@
 <div class="container-fluid">
   <div class="row g-0">
-    <aside class="sidebar-col">
+    <aside class="sidebar-col" [class.show]="showFilters">
       <app-filter-sidebar
         (filterChange)="onFilterChange($event)"
+        (closeFilters)="toggleFilters()"
       ></app-filter-sidebar>
     </aside>
+    <div
+      class="overlay"
+      [class.show]="showFilters"
+      (click)="toggleFilters()"
+    ></div>
     <main class="content-col">
       <div class="header">
         <div class="header-left">
+          <button class="filter-toggle" (click)="toggleFilters()">
+            <i class="fas fa-filter"></i>
+          </button>
           <h2>Product Catalog</h2>
           <span class="results-count"
             >({{ productList?.filteredProducts?.length ?? 0 }} results)</span
