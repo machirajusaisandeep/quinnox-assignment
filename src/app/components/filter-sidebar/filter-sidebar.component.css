@@ -1,4 +1,23 @@
 .sidebar {
   background-color: #f8f9fa;
   height: 100%;
+  border-right: 1px solid #dee2e6;
+  padding: 20px;
+}
+
+.form-label {
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.form-check {
+  margin-bottom: 8px;
+}
+
+.form-control {
+  width: 100%;
+}
+
+.gap-2 {
+  gap: 10px;
 }
