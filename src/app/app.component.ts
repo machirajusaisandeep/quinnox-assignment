@@ -24,6 +24,10 @@ export class AppComponent {
 
   filteredProducts: Product[] = [];
 
+  get wishlistCount(): number {
+    return this.productService.getWishlist().length;
+  }
+
   constructor(private productService: ProductService) {}
 
   ngOnInit() {

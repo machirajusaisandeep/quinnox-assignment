@@ -52,4 +52,13 @@ export class FilterSidebarComponent {
   isCategorySelected(category: string): boolean {
     return this.filters.categories.includes(category);
   }
+
+  clearFilters(): void {
+    this.filters = {
+      priceRange: { min: '', max: '' },
+      rating: null,
+      categories: [],
+    };
+    this.updateFilters();
+  }
 }

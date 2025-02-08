@@ -146,3 +146,29 @@ input[type="radio"] {
     padding: 12px;
   }
 }
+
+.filters-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.clear-btn {
+  background: none;
+  border: none;
+  color: #007185;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.clear-btn:hover {
+  color: #c45500;
+}
+
+.clear-btn i {
+  font-size: 12px;
+}

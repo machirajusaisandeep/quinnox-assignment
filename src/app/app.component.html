@@ -6,7 +6,15 @@
       ></app-filter-sidebar>
     </aside>
     <main class="content-col">
-      <h2>Product Catalog</h2>
+      <div class="header">
+        <h2>Product Catalog</h2>
+        <div class="actions">
+          <button class="wishlist-btn">
+            <i class="fas fa-heart"></i>
+            <span class="badge">{{ wishlistCount }}</span>
+          </button>
+        </div>
+      </div>
       <app-product-list #productList></app-product-list>
     </main>
   </div>
