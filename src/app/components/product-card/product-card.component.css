@@ -47,6 +47,12 @@
   margin-bottom: 12px;
 }
 
+.stars {
+  color: #ffa41c;
+  font-size: 16px;
+  letter-spacing: -1px;
+}
+
 ngb-rating {
   color: #ffa41c;
   font-size: 16px;

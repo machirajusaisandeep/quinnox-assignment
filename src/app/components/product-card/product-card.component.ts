@@ -31,6 +31,14 @@ export class ProductCardComponent {
   }
 
   getRating(): number {
-    return Number(this.product.rating);
+    const rating = Number(this.product.rating) || 0;
+    return Math.min(Math.max(rating, 0), 5); // Ensure rating is between 0 and 5
+  }
+
+  getStarRating(): string {
+    const rating = this.getRating();
+    const fullStars = '★'.repeat(rating);
+    const emptyStars = '☆'.repeat(Math.max(5 - rating, 0));
+    return fullStars + emptyStars;
   }
 }

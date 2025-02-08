@@ -4,7 +4,7 @@
     <h5 class="card-title">{{ product.name }}</h5>
     <div class="price">₹{{ product.price }}</div>
     <div class="rating">
-      <ngb-rating [rate]="getRating()" [readonly]="true" [max]="5"></ngb-rating>
+      <span class="stars">{{ getStarRating() }}</span>
     </div>
     <button class="btn-wishlist" (click)="onWishlistClick()">
       {{ isInWishlist ? "Remove from Wishlist" : "Add to Wishlist" }}
